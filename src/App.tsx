@@ -1,7 +1,13 @@
+import Header from "./layouts/Header";
+import Footer from "./layouts/Footer";
+import Home from "./pages/Home";
+
 function App() {
   return (
     <>
-      <h1 className="underline">Hello World</h1>
+      <Header />
+      <Home />
+      <Footer />
     </>
   );
 }
