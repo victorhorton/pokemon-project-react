@@ -6,7 +6,7 @@ import {
 } from "pokenode-ts"; // import the PokemonClient (EggGroups enum is fully optional)
 import { titleize } from "../utils/formatStrings";
 
-function SearchBar() {
+function SearchBar(props: { handleSubmit: (arg0: string) => void }) {
   const [userInput, setUserInput] = useState("");
   const [pokemonList, setPokemonList] = useState<NamedAPIResource[]>();
   const [options, setOptions] = useState<string[]>([]);
@@ -46,14 +46,14 @@ function SearchBar() {
     }
   }, [userInput, pokemonList]);
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    alert(userInput);
-    setUserInput(() => "");
-  };
-
   const handleChange = ({ target }: { target: { value: string } }) => {
     setUserInput(() => target.value);
+  };
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    props.handleSubmit(userInput);
+    setUserInput(() => "");
   };
 
   return (
