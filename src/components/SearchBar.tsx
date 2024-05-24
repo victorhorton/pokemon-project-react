@@ -36,7 +36,7 @@ function SearchBar() {
       setOptions(
         pokemonList
           .filter((pokemon) => {
-            return pokemon.name.includes(userInput);
+            return pokemon.name.includes(userInput.toLocaleLowerCase());
           })
           .slice(0, amountToDisplay)
           .map((pokemon) => {
@@ -63,7 +63,7 @@ function SearchBar() {
           type="search"
           onChange={handleChange}
           list="pokemon-list"
-          className="p-2 m-2 border border-slate-600 rounded-3xl"
+          className="p-2 m-2 w-3/4 border border-slate-500 rounded-3xl text-center"
         />
       </form>
       <datalist id="pokemon-list">
